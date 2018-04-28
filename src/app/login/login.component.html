@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-md-6">
+      <tabset [justified]="true">
+          <tab heading="Login" id="tab1"> <!-- LOGIN -->
+            <div class="card text-center">
+              <div class="card-body">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="userid">
+                      <i class="fas fa-address-card"></i>
+                    </span>
+                  </div>
+                  <input type="text" class="form-control" placeholder="Usuario" aria-label="Usuario" aria-describedby="userid">
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="passwordid">
+                      <i class="fas fa-key"></i>
+                    </span>
+                  </div>
+                  <input type="text" class="form-control" placeholder="Usuario" aria-label="Usuario" aria-describedby="passwordid">
+                </div>
+                <a [routerLink]="['/dashboard']" class="btn btn-primary">iniciar sesion</a>
+              </div>
+            </div>
+          </tab>
+          <tab heading="Registrarse"> <!-- REGISTRARSE -->
+            Registrarse
+          </tab>
+      </tabset>
+        <!--<div class="card-header">
+          Featured
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Special title treatment</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+        <div class="card-footer text-muted">
+          2 days ago
+        </div>-->
+    </div>
+  </div>
+</div>
