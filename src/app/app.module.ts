@@ -16,6 +16,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { ErrorComponent } from './error/error.component';
 import { LoginComponent } from './login/login.component';
+import { AlertComponent } from './alert/alert.component';
+import { EventComponent } from './event/event.component';
+import { ProfileComponent } from './profile/profile.component';
 
 //Servicios
 import { AuthService } from './_services/auth.service'; 
@@ -23,14 +26,16 @@ import { AuthService } from './_services/auth.service';
 //Guardian
 import { AuthGuard } from './auth.guard';
 
-
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     DashboardComponent,
     ErrorComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent,
+    AlertComponent,
+    EventComponent
   ],
   imports: [
     BrowserModule,
