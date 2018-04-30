@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
+import { HttpModule } from '@angular/http';
 
 //Para bootstrap
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -16,6 +17,9 @@ import { AppRoutingModule } from './/app-routing.module';
 import { ErrorComponent } from './error/error.component';
 import { LoginComponent } from './login/login.component';
 
+//Servicios
+import { AuthService } from './_services/auth.service'; 
+
 //Guardian
 import { AuthGuard } from './auth.guard';
 
@@ -30,6 +34,7 @@ import { AuthGuard } from './auth.guard';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
@@ -37,7 +42,10 @@ import { AuthGuard } from './auth.guard';
     TabsModule.forRoot(),
     AppRoutingModule
   ],
-  providers: [AuthGuard],
+  providers: [
+    AuthGuard,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

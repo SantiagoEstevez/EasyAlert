@@ -21,7 +21,10 @@
                   </div>
                   <input type="text" class="form-control" placeholder="Usuario" aria-label="Usuario" aria-describedby="passwordid">
                 </div>
-                <a [routerLink]="['/dashboard']" class="btn btn-primary">iniciar sesion</a>
+                <a (click)="authService.login()" class="btn btn-primary">iniciar sesion</a>
+              </div>
+              <div class="card-footer text-muted">
+                2 days ago
               </div>
             </div>
           </tab>
