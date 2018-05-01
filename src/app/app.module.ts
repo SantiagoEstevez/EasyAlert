@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 //Para bootstrap
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -22,6 +23,7 @@ import { ProfileComponent } from './profile/profile.component';
 
 //Servicios
 import { AuthService } from './_services/auth.service'; 
+import { CharexampleService } from './_services/charexample.service'; //ejemplo grafica
 
 //Guardian
 import { AuthGuard } from './auth.guard';
@@ -40,6 +42,7 @@ import { AuthGuard } from './auth.guard';
   imports: [
     BrowserModule,
     HttpModule,
+    HttpClientModule,
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
@@ -49,7 +52,8 @@ import { AuthGuard } from './auth.guard';
   ],
   providers: [
     AuthGuard,
-    AuthService
+    AuthService,
+    CharexampleService
   ],
   bootstrap: [AppComponent]
 })
