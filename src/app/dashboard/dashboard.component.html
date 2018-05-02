@@ -1,39 +1,35 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="card-columns">
-            <div class="card text-center">
-                <div class="card-body">
-                    <h5 class="card-title">Lag</h5>
-                    <div *ngIf="chart">
-                        <canvas id="canvas">{{ chart }}</canvas>
+        <div class="col-12">
+            <div class="card-columns">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Lag</h5>
+                        <canvas id="canvas"> chart </canvas>
+                    </div>
+                    <div class="card-footer text-muted">
+                        2 days ago
                     </div>
                 </div>
-                <div class="card-footer text-muted">
-                    2 days ago
-                </div>
-            </div>
 
-            <div class="card text-center">
-                <div class="card-body">
-                    <h5 class="card-title">Lag</h5>
-                    <div *ngIf="chart">
-                        <canvas id="canvas">{{ chart }}</canvas>
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Lag</h5>
+                        <canvas id="doughnutChart"> DoughnutChart </canvas>
+                    </div>
+                    <div class="card-footer text-muted">
+                        2 days ago
                     </div>
                 </div>
-                <div class="card-footer text-muted">
-                    2 days ago
-                </div>
-            </div>
 
-            <div class="card text-center">
-                <div class="card-body">
-                    <h5 class="card-title">Lag</h5>
-                    <div *ngIf="chart">
-                        <canvas id="canvas">{{ chart }}</canvas>
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Lag</h5>
+                        <canvas id="pieChart"> PieCahrt </canvas>
                     </div>
-                </div>
-                <div class="card-footer text-muted">
-                    2 days ago
+                    <div class="card-footer text-muted">
+                        2 days ago
+                    </div>
                 </div>
             </div>
         </div>

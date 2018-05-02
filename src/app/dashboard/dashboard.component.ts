@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { CharexampleService } from '../_services/charexample.service';
 import { Chart } from 'chart.js';
 
@@ -10,6 +10,8 @@ import { Chart } from 'chart.js';
 export class DashboardComponent implements OnInit {
 
   chart = [];
+  DoughnutChart: any;
+  PieChart: any;
 
   constructor(
     private _weather: CharexampleService
@@ -60,5 +62,41 @@ export class DashboardComponent implements OnInit {
           }
         });
       });
+
+   this.DoughnutChart = new Chart('doughnutChart', {
+        type: 'doughnut',
+        data: {
+            datasets: [{
+                backgroundColor: ['rgb(255, 99, 132)', 'rgb(255, 99, 0)', 'rgb(255, 0, 132)'],
+                data: [10, 20, 30]
+            }],
+        
+            // These labels appear in the legend and in the tooltips when hovering different arcs
+            labels: [
+                'Red',
+                'Yellow',
+                'Blue'
+            ]
+        },
+        options: {}
+    });
+
+    this.PieChart = new Chart('pieChart', {
+      type: 'pie',
+      data: {
+          datasets: [{
+              backgroundColor: ['rgb(255, 99, 132)', 'rgb(255, 99, 0)', 'rgb(255, 0, 132)'],
+              data: [10, 20, 30]
+          }],
+      
+          // These labels appear in the legend and in the tooltips when hovering different arcs
+          labels: [
+              'Red',
+              'Yellow',
+              'Blue'
+          ]
+      },
+      options: {}
+  });
   }
 }
