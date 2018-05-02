@@ -96,7 +96,19 @@ export class DashboardComponent implements OnInit {
               'Blue'
           ]
       },
-      options: {}
+      options: {
+        legend: {
+            display: true,
+            position: 'bottom',
+            labels: {
+                fontColor: 'rgb(255, 99, 132)',
+                usePointStyle: true
+            }
+        },
+        elements: {
+          pointStyle: 'circle'
+        } 
+      }
   });
   }
 }
