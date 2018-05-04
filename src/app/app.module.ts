@@ -27,6 +27,7 @@ import { CharexampleService } from './_services/charexample.service'; //ejemplo 
 
 //Guardian
 import { AuthGuard } from './auth.guard';
+import { MapComponent } from './map/map.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { AuthGuard } from './auth.guard';
     LoginComponent,
     ProfileComponent,
     AlertComponent,
-    EventComponent
+    EventComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
