@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { CharexampleService } from '../_services/charexample.service';
 import { Chart } from 'chart.js';
+import { AuthService } from '../_services/auth.service'
 
 @Component({
   selector: 'app-dashboard',
@@ -14,11 +15,12 @@ export class DashboardComponent implements OnInit {
   PieChart: any;
 
   constructor(
-    private _weather: CharexampleService
+    private _weather: CharexampleService,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
-    this._weather.dailyForecast()
+    /*this._weather.dailyForecast()
       .subscribe(res => {
         let temp_max = res['list'].map(res => res.main.temp_max);
         let temp_min = res['list'].map(res => res.main.temp_min);
@@ -61,7 +63,7 @@ export class DashboardComponent implements OnInit {
             }
           }
         });
-      });
+      });*/
 
    this.DoughnutChart = new Chart('doughnutChart', {
         type: 'doughnut',

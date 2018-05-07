@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   private headers = new Headers({ 'Content-Type': 'application/json' });
-  private url = 'http://localhost:6346/api/Evento/Global/';
+  private url = 'http://172.16.104.152:8080/Proyecto2018';
 
   constructor(
     private http: Http,
@@ -36,6 +36,17 @@ export class AuthService {
   getTokenFake(): Promise<string> {
     return Promise.reject("estoesuntokendementira");
     //localStorage.setItem('token', response.json() as string);
+  }
+
+  getToken2(): Promise<string> {
+    let userData64: string = "fede:fede";
+    this.headers.append("Authorization","Basic " + btoa(userData64));
+    const url = `${this.url}/rest/seguridad/token`;
+
+    return this.http.get(url)
+        .toPromise()
+        .then(response => response.json() as string)
+        .catch(this.handleError);
   }
 
   getToken(lat: number, lon: number): Promise<string> {
