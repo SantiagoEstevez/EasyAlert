@@ -80,22 +80,33 @@ export class DashboardComponent implements OnInit {
                 'Blue'
             ]
         },
-        options: {}
+        options: {
+          legend: {
+              display: true,
+              position: 'bottom',
+              labels: {
+                  fontColor: 'rgb(0, 0, 0)',
+                  usePointStyle: true
+              }
+          },
+          elements: {
+            pointStyle: 'circle'
+          } 
+        }
     });
 
+    
     this.PieChart = new Chart('pieChart', {
       type: 'pie',
       data: {
           datasets: [{
-              backgroundColor: ['rgb(255, 99, 132)', 'rgb(255, 99, 0)', 'rgb(255, 0, 132)'],
-              data: [10, 20, 30]
+              backgroundColor: ['rgb(255, 99, 132)'],
+              data: [this.authService.getMemory()]
           }],
       
           // These labels appear in the legend and in the tooltips when hovering different arcs
           labels: [
-              'Red',
-              'Yellow',
-              'Blue'
+              'Memoria libre'
           ]
       },
       options: {
@@ -112,5 +123,8 @@ export class DashboardComponent implements OnInit {
         } 
       }
   });
+
+  console.log("antes de:");
+  console.log(this.authService.getMemory());
   }
 }
