@@ -1,18 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 //import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Router } from '@angular/router';
 import { User } from '../_models/user';
 import { CookieService } from 'ngx-cookie-service';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AuthService {
 
   private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  //private headers = new Headers({ 'Content-Type': 'application/json' });
-  private url = 'http://172.16.104.76:8080/Proyecto2018';
-  private url2 = 'http://localhost:52086/api/values/token';
 
   constructor(
     private http: HttpClient,
@@ -24,9 +23,10 @@ export class AuthService {
   login(oUser: User) {
     let userData64: string = "fede:fede";
     this.headers = this.headers.set("Authorization", "Basic " + btoa(userData64));
-    const url = `${this.url}/rest/seguridad/token`;
+    //const url = `${environment.api_urlbase}rest/seguridad/token`;
+    const url = `${environment.api_urlbase}values/token`;
 
-    this.http.get(this.url2, {observe: 'response', headers : this.headers})
+    this.http.get(url, {observe: 'response', headers : this.headers})
       .subscribe(
         res => {
           this.cookieService.set( '@easyaler::token', res.headers.get('SecurityToken'));
@@ -59,15 +59,6 @@ export class AuthService {
             //return true;
           });
   }*/
-
-
-  getMemory() {
-    //const url = `${this.url}/rest/info/free/node3`;
-    const url = `http://localhost:52086/api/values/5`;
-    this.headers.append("SecurityToken", "eyJhbGciOiJIUzUxMiJ9.eyJSb2xlcyI6IiIsIlVzdWFyaW8iOiJmZWRlIiwic3ViIjoiVG9rZW4gdmFsaWRvIiwiaXNzIjoiR3J1cG80LVByb3llY3RvMjAxOCIsImlhdCI6MTUyNjQyNjE5MSwiZXhwIjoxNTI2NDI5NzkxfQ.u4PdsaNc4m9tsjoGzLR2hDhzl6k1TLkrGETvLyBbWvb1QMRhGY_Pu1gpoXmZkMo0N_7pF_OVPreoCOv4m0aJwg");
-    return this.http.get(url, {responseType: 'text', headers : this.headers})
-        .subscribe(res => { res });  
-  }
 
   logout(): void {
     this.cookieService.deleteAll();

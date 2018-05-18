@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { CharexampleService } from '../_services/charexample.service';
 import { Chart } from 'chart.js';
 import { AuthService } from '../_services/auth.service'
+import { GraphService } from '../_services/graph.service'
 
 @Component({
   selector: 'app-dashboard',
@@ -16,7 +17,8 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private _weather: CharexampleService,
-    private authService: AuthService
+    private authService: AuthService,
+    private graphService: GraphService
   ) { }
 
   ngOnInit() {
@@ -95,36 +97,34 @@ export class DashboardComponent implements OnInit {
         }
     });
 
-    
-    this.PieChart = new Chart('pieChart', {
-      type: 'pie',
-      data: {
-          datasets: [{
-              backgroundColor: ['rgb(255, 99, 132)'],
-              data: [this.authService.getMemory()]
-          }],
-      
-          // These labels appear in the legend and in the tooltips when hovering different arcs
-          labels: [
-              'Memoria libre'
-          ]
-      },
-      options: {
-        legend: {
-            display: true,
-            position: 'bottom',
-            labels: {
-                fontColor: 'rgb(255, 99, 132)',
-                usePointStyle: true
-            }
-        },
-        elements: {
-          pointStyle: 'circle'
-        } 
-      }
-  });
-
-  console.log("antes de:");
-  console.log(this.authService.getMemory());
+    this.graphService.getMemory().subscribe(res => {
+      this.PieChart = new Chart('pieChart', {
+          type: 'pie',
+          data: {
+              datasets: [{
+                  backgroundColor: ['rgb(255, 99, 132)'],
+                  data: [res]
+              }],
+          
+              // These labels appear in the legend and in the tooltips when hovering different arcs
+              labels: [
+                  'Memoria libre'
+              ]
+          },
+          options: {
+            legend: {
+                display: true,
+                position: 'bottom',
+                labels: {
+                    fontColor: 'rgb(255, 99, 132)',
+                    usePointStyle: true
+                }
+            },
+            elements: {
+              pointStyle: 'circle'
+            } 
+          }
+      });
+    });
   }
 }

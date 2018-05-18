@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 //Para bootstrap
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -24,7 +25,9 @@ import { ProfileComponent } from './profile/profile.component';
 //Servicios
 import { AuthService } from './_services/auth.service'; 
 import { CharexampleService } from './_services/charexample.service'; //ejemplo grafica
+import { GraphService } from './_services/graph.service';
 import { CookieService } from 'ngx-cookie-service';
+import { AuthInterceptor } from './_interceptors/auth-interceptor'; 
 
 //Guardian
 import { AuthGuard } from './auth.guard';
@@ -57,7 +60,13 @@ import { MapComponent } from './map/map.component';
     AuthGuard,
     AuthService,
     CharexampleService,
-    CookieService
+    CookieService,
+    GraphService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    }
   ],
   bootstrap: [AppComponent]
 })
