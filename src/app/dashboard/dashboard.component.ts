@@ -1,5 +1,4 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { CharexampleService } from '../_services/charexample.service';
 import { Chart } from 'chart.js';
 import { AuthService } from '../_services/auth.service'
 import { GraphService } from '../_services/graph.service'
@@ -16,7 +15,6 @@ export class DashboardComponent implements OnInit {
   PieChart: any;
 
   constructor(
-    private _weather: CharexampleService,
     private authService: AuthService,
     private graphService: GraphService
   ) { }

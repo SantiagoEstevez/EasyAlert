@@ -24,7 +24,6 @@ import { ProfileComponent } from './profile/profile.component';
 
 //Servicios
 import { AuthService } from './_services/auth.service'; 
-import { CharexampleService } from './_services/charexample.service'; //ejemplo grafica
 import { GraphService } from './_services/graph.service';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthInterceptor } from './_interceptors/auth-interceptor'; 
@@ -59,7 +58,6 @@ import { MapComponent } from './map/map.component';
   providers: [
     AuthGuard,
     AuthService,
-    CharexampleService,
     CookieService,
     GraphService,
     {
