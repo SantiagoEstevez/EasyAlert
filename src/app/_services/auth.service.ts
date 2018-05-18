@@ -20,8 +20,8 @@ export class AuthService {
     private cookieService: CookieService
   ) { }
 
-  login(oUser: User) {
-    let userData64: string = "fede:fede";
+  login(oUser: User): any {
+    let userData64: string = `${oUser.username}:${oUser.password}`;
     this.headers = this.headers.set("Authorization", "Basic " + btoa(userData64));
     //const url = `${environment.api_urlbase}rest/seguridad/token`;
     const url = `${environment.api_urlbase}values/token`;
@@ -29,8 +29,8 @@ export class AuthService {
     this.http.get(url, {observe: 'response', headers : this.headers})
       .subscribe(
         res => {
-          this.cookieService.set( '@easyaler::token', res.headers.get('SecurityToken'));
-          this.cookieService.set( '@easyaler::user', "user model");
+          this.cookieService.set('@easyaler::token', res.headers.get('SecurityToken'));
+          this.cookieService.set('@easyaler::user', "user model");
           this.router.navigate(['dashboard']);
           return true;
         },

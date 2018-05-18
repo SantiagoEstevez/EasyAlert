@@ -12,7 +12,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
        // Get the auth header from your auth service.
-       const authReq = req.clone({headers: req.headers.set('Authorization', `Token ${this.cookieService.get("@easyaler::token")}`)});
+       const authReq = req.clone({headers: req.headers.set('SecurityToken', `${this.cookieService.get("@easyaler::token")}`)});
        return next.handle(authReq);
    }
 }

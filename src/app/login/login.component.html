@@ -11,7 +11,7 @@
                     <i class="fas fa-address-card"></i>
                   </span>
                 </div>
-                <input type="text" class="form-control" placeholder="User" aria-label="userid" aria-describedby="userid">
+                <input [(ngModel)]="oUser.username" type="text" class="form-control" placeholder="User" aria-label="userid" aria-describedby="userid">
               </div>
 
               <div class="input-group mb-3">
@@ -20,9 +20,9 @@
                     <i class="fas fa-key"></i>
                   </span>
                 </div>
-                <input type="text" class="form-control" placeholder="Password" aria-label="passwordid" aria-describedby="passwordid">
+                <input [(ngModel)]="oUser.password" type="text" class="form-control" placeholder="Password" aria-label="passwordid" aria-describedby="passwordid">
               </div>
-              <a (click)="authService.login()" class="btn btn-primary">Sing up</a>
+              <a (click)="this.authService.login(oUser)" class="btn btn-primary">Sing up</a>
             </div>
             <div class="card-footer text-muted">
               Sign in to enjoy EasyAlert
@@ -60,7 +60,7 @@
                   <input type="text" class="form-control" placeholder="Password" aria-label="r.password2id" aria-describedby="r.password2id">
                 </div>
 
-                <a (click)="authService.login()" class="btn btn-primary">Create an account</a>
+                <a class="btn btn-primary">Create an account</a>
               </div>
               <div class="card-footer text-muted">
                 Create an account to enjoy EasyAlert

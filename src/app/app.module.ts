@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 //Para bootstrap
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -53,7 +54,8 @@ import { MapComponent } from './map/map.component';
     ModalModule.forRoot(),
     CollapseModule.forRoot(),
     TabsModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [
     AuthGuard,
